@@ -4,7 +4,7 @@ Discord Rich Presence for ![GMiner](https://github.com/develsoftware/GMinerRelea
 
 [![GitHub stars](https://img.shields.io/github/stars/LockBlock-dev/gminer-rp.svg)](https://github.com/LockBlock-dev/gminer-rp/stargazers)
 
-![Rich Presence preview](/preview.png)
+![Rich Presence preview](/preview.jpg)
 
 Note that this rich presence starts the miner, no need to start it.
 
