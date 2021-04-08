@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "discord-rich-presence": "^0.0.8"
+  }
+}
