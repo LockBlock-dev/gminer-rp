@@ -8,6 +8,8 @@ Discord Rich Presence for ![GMiner](https://github.com/develsoftware/GMinerRelea
 
 Note that this rich presence starts the miner, no need to start it.
 
+Tested with Ethash and AMD GPU on Windows Pro x64
+
 
 ## How to use
 
