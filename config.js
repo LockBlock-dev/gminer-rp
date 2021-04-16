@@ -5,7 +5,8 @@ module.exports = {
     minerOptions: [
         '--algo', 'ALGO',
         '--server', 'POOL_ADRESS:PORT',
-        '--user', 'WALLET.WORKER_NAME',
+        '--user', 'WALLET',
+        '--worker', 'WORKER_NAME',
     ],
     //here are the options you put in the .bat to start the miner (algo, pool, user, ...)
     //to add any parameter, just add: 'parameter', 'value',
