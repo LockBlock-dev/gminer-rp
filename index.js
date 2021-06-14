@@ -39,31 +39,31 @@ miner.stdout.on('data', (data) => {
         }
 
         if (data.includes('H/s')) {
-            hashrate = `${arrayData[2].split(' ')[11]} ${arrayData[2].split(' ')[12]}`
+            hashrate = `${arrayData[2].split(' ')[12]} ${arrayData[2].split(' ')[13]}`
 
-            if (arrayData[2].split(' ')[11] == undefined || arrayData[2].split(' ')[12] == undefined) {
-                hashrate = `${arrayData[1].split(' ')[11]} ${arrayData[1].split(' ')[12]}`
-                if (arrayData[1].split(' ')[11] == undefined || arrayData[1].split(' ')[12] == undefined) {
-                    hashrate = `${arrayData[0].split(' ')[11]} ${arrayData[0].split(' ')[12]}`
+            if (arrayData[2].split(' ')[12] == undefined || arrayData[2].split(' ')[13] == undefined) {
+                hashrate = `${arrayData[1].split(' ')[12]} ${arrayData[1].split(' ')[13]}`
+                if (arrayData[1].split(' ')[12] == undefined || arrayData[1].split(' ')[13] == undefined) {
+                    hashrate = `${arrayData[0].split(' ')[12]} ${arrayData[0].split(' ')[13]}`
                 }
             }
 
-            sharesCount = arrayData[2].split(' ')[14]
+            sharesCount = arrayData[2].split(' ')[15]
 
             if (sharesCount == undefined) {
-                sharesCount = arrayData[1].split(' ')[14]
+                sharesCount = arrayData[1].split(' ')[15]
                 if (sharesCount == undefined) {
-                    sharesCount = arrayData[0].split(' ')[14]
+                    sharesCount = arrayData[0].split(' ')[15]
                 }
             }
 
             if (!sharesCount.includes('/')) {
-                sharesCount = arrayData[2].split(' ')[13]
+                sharesCount = arrayData[2].split(' ')[14]
 
                 if (sharesCount == undefined) {
-                    sharesCount = arrayData[1].split(' ')[13]
+                    sharesCount = arrayData[1].split(' ')[14]
                     if (sharesCount == undefined) {
-                        sharesCount = arrayData[0].split(' ')[13]
+                        sharesCount = arrayData[0].split(' ')[14]
                     }
                 }
             }
