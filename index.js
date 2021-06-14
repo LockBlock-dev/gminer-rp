@@ -1,6 +1,6 @@
-const { spawn } = require('child_process')
+const { spawn } = require("child_process")
 
-const config = require('./config.js')
+const config = require("./config.js")
 
 const miner = spawn(config.minerPath, config.minerOptions)
 
@@ -10,12 +10,11 @@ const log = (value) => {
     }
 }
 
-var algo, GPU, sharesCount = "..."
-var hashrate = "... H/s"
+var GPU = ""
 
-miner.stdout.setEncoding('utf8')
+miner.stdout.setEncoding("utf8")
 
-miner.stdout.on('data', (data) => {
+miner.stdout.on("data", (data) => {
 
     try {
 
@@ -38,59 +37,30 @@ miner.stdout.on('data', (data) => {
             log(GPU)
         }
 
-        if (data.includes('H/s')) {
-            hashrate = `${arrayData[2].split(' ')[12]} ${arrayData[2].split(' ')[13]}`
-
-            if (arrayData[2].split(' ')[12] == undefined || arrayData[2].split(' ')[13] == undefined) {
-                hashrate = `${arrayData[1].split(' ')[12]} ${arrayData[1].split(' ')[13]}`
-                if (arrayData[1].split(' ')[12] == undefined || arrayData[1].split(' ')[13] == undefined) {
-                    hashrate = `${arrayData[0].split(' ')[12]} ${arrayData[0].split(' ')[13]}`
-                }
-            }
-
-            sharesCount = arrayData[2].split(' ')[15]
-
-            if (sharesCount == undefined) {
-                sharesCount = arrayData[1].split(' ')[15]
-                if (sharesCount == undefined) {
-                    sharesCount = arrayData[0].split(' ')[15]
-                }
-            }
-
-            if (!sharesCount.includes('/')) {
-                sharesCount = arrayData[2].split(' ')[14]
-
-                if (sharesCount == undefined) {
-                    sharesCount = arrayData[1].split(' ')[14]
-                    if (sharesCount == undefined) {
-                        sharesCount = arrayData[0].split(' ')[14]
-                    }
-                }
-            }
-
-            log(hashrate)
-            log(sharesCount)
-        }
-
     } catch(e) {
-        
+        console.log(e)
     }
 
 })
 
-miner.stderr.setEncoding('utf8')
+miner.stderr.setEncoding("utf8")
 
-miner.stderr.on('data', (data) => {
+miner.stderr.on("data", (data) => {
     console.log(`error : ${data}`)
 })
 
+const { Client } = require("gminer.js")
+const gminer = new Client(config.minerOptions[config.minerOptions.indexOf("--api")+1])
 
+var algo, sharesCount = "..."
+var hashrate = "..."
+var data
 
-const client = require('discord-rich-presence')('829648686706589737')
+const client = require("discord-rich-presence")("829648686706589737")
 
 const discordRPC = async () => {
 
-    client.on('connected', () => {
+    client.on("connected", () => {
 
         console.log("Connected to Discord !")
         startTimestamp = new Date()
@@ -103,7 +73,13 @@ const discordRPC = async () => {
             largeImageText: `Mining ${algo}`
         })
 
-        setInterval(() => {
+        setInterval( async () => {
+
+            data = await gminer.stats()
+
+            algo = data.algorithm
+            hashrate = `${(data.devices[0].speed / 1000000).toFixed(2)} M${data.speed_unit}`
+            sharesCount = `${data.total_accepted_shares}/${data.total_rejected_shares}/${data.total_invalid_shares}`
 
             client.updatePresence({
                 state: `GPU: ${GPU}`,
