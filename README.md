@@ -1,6 +1,6 @@
 # GMiner Rich Presence
 
-[![discord.js](https://img.shields.io/github/package-json/dependency-version/LockBlock-dev/gminer-rp/discord-rich-presence)](https://www.npmjs.com/package/discord-rich-presence)
+[![discord.js](https://img.shields.io/github/package-json/dependency-version/LockBlock-dev/gminer-rp/discord-rich-presence)](https://www.npmjs.com/package/discord-rich-presence) [![discord.js](https://img.shields.io/github/package-json/dependency-version/LockBlock-dev/gminer-rp/gminer.js)](https://www.npmjs.com/package/gminer.js)
 
 [![GitHub stars](https://img.shields.io/github/stars/LockBlock-dev/gminer-rp.svg)](https://github.com/LockBlock-dev/gminer-rp/stargazers)
 
