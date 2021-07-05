@@ -1,8 +1,10 @@
 # GMiner Rich Presence
 
-Discord Rich Presence for ![GMiner](https://github.com/develsoftware/GMinerRelease/releases) made with [![discord.js](https://img.shields.io/github/package-json/dependency-version/LockBlock-dev/gminer-rp/discord-rich-presence)](https://www.npmjs.com/package/discord-rich-presence)
+[![discord.js](https://img.shields.io/github/package-json/dependency-version/LockBlock-dev/gminer-rp/discord-rich-presence)](https://www.npmjs.com/package/discord-rich-presence)
 
 [![GitHub stars](https://img.shields.io/github/stars/LockBlock-dev/gminer-rp.svg)](https://github.com/LockBlock-dev/gminer-rp/stargazers)
+
+Discord Rich Presence for ![GMiner](https://github.com/develsoftware/GMinerRelease/releases)
 
 ![Rich Presence preview](/preview.jpg)
 
