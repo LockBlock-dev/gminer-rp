@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "discord-rich-presence": "^0.0.8",
+    "discord-rpc": "^4.0.1",
     "gminer.js": "^1.0.0"
   }
 }
