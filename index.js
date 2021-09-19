@@ -29,22 +29,24 @@ miner.stderr.on("data", (data) => {
 const GMinerAPI = new gminer.Client(config.minerOptions[config.minerOptions.indexOf("--api") + 1]);
 const rpc = new discord.Client({ transport: "ipc" });
 
+const discordPRC = async () => {
+    let data = await GMinerAPI.stats();
+    let hashrate = `${(data.devices[0].speed / 1000000).toFixed(2)} M${data.speed_unit}`;
+    let sharesCount = `${data.total_accepted_shares}/${data.total_rejected_shares}/${data.total_invalid_shares}`;
+
+    rpc.setActivity({
+        details: `${data.algorithm} : ${hashrate} - ${sharesCount} shares`,
+        state: `GPU: ${GPU ? GPU : data.devices[0].name}`,
+        startTimestamp,
+        largeImageKey: "gminer-logo",
+        largeImageText: data.miner,
+    });
+};
+
 rpc.on("connected", () => {
     console.log("Connected to Discord!");
-
-    setInterval(async () => {
-        let data = await GMinerAPI.stats();
-        let hashrate = `${(data.devices[0].speed / 1000000).toFixed(2)} M${data.speed_unit}`;
-        let sharesCount = `${data.total_accepted_shares}/${data.total_rejected_shares}/${data.total_invalid_shares}`;
-
-        rpc.setActivity({
-            details: `${data.algorithm} : ${hashrate} - ${sharesCount} shares`,
-            state: `GPU: ${GPU ? GPU : data.devices[0].name}`,
-            startTimestamp,
-            largeImageKey: "gminer-logo",
-            largeImageText: data.miner,
-        });
-    }, 10000);
+    discordPRC();
+    setInterval(() => discordPRC(), 10000);
 });
 
 process.on("unhandledRejection", console.error);
