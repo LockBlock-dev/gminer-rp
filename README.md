@@ -25,7 +25,7 @@ Tested with an AMD GPU on Windows Pro x64.
 ```js
 minerPath: "PATH_TO_miner.exe",
 //only slash { / }, don't put backslash { \ }
-//example: "C:/Users/LockBlock/Desktop/GMiner/minexe.exe"
+//example: "C:/Users/LockBlock/Desktop/GMiner/miner.exe"
 minerOptions: [
     '--algo', 'ALGO',
     '--server', 'POOL_ADRESS:PORT',

@@ -1,7 +1,7 @@
 module.exports = {
     minerPath: "PATH_TO_miner.exe",
     //only slash { / }, don't put backslash { \ }
-    //example: "C:/Users/LockBlock/Desktop/GMiner/minexe.exe"
+    //example: "C:/Users/LockBlock/Desktop/GMiner/miner.exe"
     minerOptions: [
         '--algo', 'ALGO',
         '--server', 'POOL_ADRESS:PORT',
